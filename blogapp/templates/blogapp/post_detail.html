@@ -96,7 +96,10 @@
 <hr>
 <br>
 <div class="comment-area">
-  <h3>コメント欄</h3>
+  <div class="comment-area-title">
+    <h3>コメント欄</h3>&nbsp;
+    <strong>(※ログイン後にできます)</strong>
+  </div>
   <a class="btn btn-primary my-3" href="{% url 'blogapp:comment_form' object.pk %}">コメントを投稿する</a>
   <br>
   {% include 'blogapp/comments.html' %}

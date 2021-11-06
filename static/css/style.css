@@ -1,6 +1,4 @@
 .view-index img {
-  /* width: 100%;
-  height: 150px; */
   object-fit: cover;
 }
 
@@ -76,19 +74,10 @@
     left: 60%;
     z-index: 100;
   }
-
-  /* .file-img{
-	  max-width: 650px;
-	  max-height: 600px;
-  } */
 }
 
 
 @media screen and (min-width: 768px) and (max-width: 1024px){
-  /* .index-card{
-    width: 45%!important;
-    flex-wrap: wrap;
-  } */
   .detail-text img{
     max-width: 400px;
     max-height: 300px;
@@ -103,21 +92,21 @@
 }
 
 @media screen and (min-width: 768px){
-  .service_menu{
-    position: relative;
-  }
-  .pay {
-    position: absolute;
-    top: -175px;
-    left: 60%;
-    z-index: 100;
-  }
-  .login-text {
-    z-index: 100;
-  }
-  .intro{
-    position:fixed;
-  }
+	.service_menu{
+		position: relative;
+	}
+	.pay {
+		position: absolute;
+		top: -175px;
+		left: 60%;
+		z-index: 100;
+	}
+	.login-text {
+		z-index: 100;
+	}
+	.intro{
+		position:fixed;
+	}
 }
 
 @media screen and (max-width: 767px) {
@@ -161,13 +150,18 @@
 		z-index: 100;
 	  }
 }
+
+@media screen and (min-width: 375px){
+	.comment-area-title{
+		display: flex;
+	}
+
+	.comment-area-title strong{
+		margin-top: 4px;
+	}
+}
+
 @media screen and (max-width: 370px) {
-  /* .pay {
-    top: -130%!important;
-    left: 50%;
-    display: block;
-    z-index: 100;
-  } */
   .detail-text img{
     max-width: 200px;
     max-height: 100px;
@@ -190,6 +184,7 @@
 		z-index: 100;
 	}
 }
+
 
 
 /* privacy */
@@ -683,18 +678,6 @@ width:59px;
 height:40px;
 background:-webkit-radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
 background:radial-gradient(#ffdb2c 7%, rgba(255, 105, 34, 0.3) 60%, rgba(255, 88, 96, 0) 70%);
-}
-/* Facebookアイコン位置 */
-.fl_fb6 .fa-facebook-f{
-position:relative;
-top:23px;
-left:17px;
-font-size:43px;
-}
-/* Facebookアイコン背景*/
-.fl_fb6{
-background:-webkit-linear-gradient(top, #5c80c6 0%, #34528c 74%);	
-background:linear-gradient(to bottom, #5c80c6 0%, #34528c 74%);	
 }
 
 /* Youtube */
