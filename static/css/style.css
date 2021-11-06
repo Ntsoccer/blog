@@ -115,7 +115,7 @@
   }
   .pay {
     position: absolute;
-    top: -100%!important;
+    top: -128%!important;
     left: 60%;
   }
   .detail-text img{
@@ -131,6 +131,13 @@
 @media screen and (max-width: 545px) {
 	.pay {
 	  top: -130%!important;
+	  display: block;
+	  z-index: 100;
+	}
+}
+@media screen and (max-width: 500px) {
+	.pay {
+	  top: -113%!important;
 	  display: block;
 	  z-index: 100;
 	}
@@ -152,12 +159,24 @@
 }
 
 @media screen and (min-width: 375px){
-	.comment-area-title{
+	.comment-availability{
 		display: flex;
+		align-items: center;
 	}
+	.comment-availability a{
+		margin: 0px;
+		margin-right: 4px;
+	}
+}
 
-	.comment-area-title strong{
-		margin-top: 4px;
+@media screen and (max-width: 374px){
+	.comment-availability a{
+		width: 60%;
+		margin: 0px;
+	}
+	.comment-availability strong{
+		margin-left: 5px;
+		margin-top: 0px;
 	}
 }
 
@@ -168,12 +187,20 @@
     object-fit: cover;
   }
 }
-@media screen and (max-width: 325px) {
+@media screen and (max-width: 340px) {
 	.pay {
 		top: -145%!important;
 		left: 13%;
 		display: block;
 		z-index: 100;
+	}
+	.comment-availability a{
+		width: 70%;
+		margin: 0px;
+	}
+	.comment-availability strong{
+		margin-left: 3px;
+		margin-top: 0px;
 	}
 }
 @media screen and (max-width: 285px) {
@@ -182,6 +209,14 @@
 		left: 15%;
 		display: block;
 		z-index: 100;
+	}
+	.comment-availability a{
+		width: 80%;
+		margin: 0px;
+	}
+	.comment-availability strong{
+		margin-left: 3px;
+		margin-top: 0px;
 	}
 }
 
