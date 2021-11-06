@@ -3,11 +3,11 @@
 
 {% block content %}
 <!-- Start your project here-->
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" >
   <div class="container">
-    <h2 class="display-4 text-center">{{request.site.siteconfig.top_title}}</h2>
-    <p class="lead text-center">{{request.site.siteconfig.top_subtitle}}</p>
-    <p class="text-center" style="color: red;">※寄付はログイン後ブログ詳細ページにてお願いします</p>
+    <h2 class="display-4 text-center">{{ request.site.siteconfig.top_title }}</h2>
+    <p class="lead">{{ request.site.siteconfig.top_subtitle|safe}}</p>
+    <!-- <p class="text-center" style="color: red;">※寄付はログイン後ブログ詳細ページにてお願いします</p> -->
   </div>
 </div>
 <!-- /Start your project here-->
