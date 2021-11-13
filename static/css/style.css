@@ -82,7 +82,7 @@ blockquote p {
 .card-detail h1::after,
 .card-detail h2::after,
 .card-detail h3::after,
-.card-detail h4::after:nth-of-type(0),
+.card-detail h4:nth-of-type(0):after,
 .card-detail h5::after,
 .card-detail h6::after{
 	content: "";
