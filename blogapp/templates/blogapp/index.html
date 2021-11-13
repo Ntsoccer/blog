@@ -35,14 +35,14 @@
         </div>
 
         <!--Card content-->
-        <div class="card-body index">
+        <div class="card-body index card-index-body">
 
           <!--Title-->
           <h4 class="card-title text-center"><a class="main-title" href="{% url 'blogapp:post_detail' item.id %}" style="color: black;">{{item.title}}</a></h4>
           <p>{{ item.category }}</p>
           <hr>
           <!--Text-->
-          <p class="card-text index-text">{{item.content|safe|truncatechars_html:70}}</p>
+          {{item.content|safe|truncatechars_html:70}}
         </div>
         <div class="card-body">
           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->

@@ -227,7 +227,10 @@ CKEDITOR_CONFIGS = {
             'uploadimage',  # the upload image feature
             'youtube',
             'codesnippet',
+            'tabletools',
+            'tableresize',
         ]),
+        # 'coreStyles_bold': { 'element': 'b' }
     }
 }
 

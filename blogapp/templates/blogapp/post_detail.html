@@ -9,7 +9,7 @@
     <br>
     {% if not user.is_authenticated %}
     <div class="login-text">
-      <p>寄付をするにはまず<a href="{% url 'blogapp:login' %}">ログイン</a>してください。</p>
+      <p><b>寄付をするにはまず<a href="{% url 'blogapp:login' %}">ログイン</a>してください。</b></p>
     </div>
     <br>
     {% endif %}
@@ -25,7 +25,7 @@
       {% endif %}
 
       <!-- Card content -->
-      <div class="card-body">
+      <div class="card-body card-detail">
 
         <!-- Title -->
         <h4 class="card-title text-center"><a>{{object.title}}</a></h4>
