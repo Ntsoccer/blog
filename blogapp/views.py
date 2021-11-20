@@ -126,6 +126,13 @@ class PostUpdate(SuperuserRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
 
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post_pk = self.kwargs['pk']
+        post.updated_at = timezone.now()
+        post.save()
+        return redirect('blogapp:post_detail', pk=post_pk)
+
     def get_success_url(self):
         messages.info(self.request, '記事を更新しました。')
         return resolve_url('blogapp:post_detail', pk=self.kwargs['pk'])
