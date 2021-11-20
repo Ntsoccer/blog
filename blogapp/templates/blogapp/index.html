@@ -44,7 +44,7 @@
           <!--Text-->
           {{item.content|safe|truncatechars_html:70}}
         </div>
-        <div class="card-body text-center">
+        <div class="card-body continuity-heart-button text-center">
           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
           <a href="{% url 'blogapp:post_detail' item.id %}" type="button" class="btn btn-blue btn-md continuity-button">続きを読む</a>
           <a href="{% url 'blogapp:like_add' item.pk %}"><i class="fas fa-heart"
