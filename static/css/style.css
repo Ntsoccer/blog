@@ -16,6 +16,17 @@ i, em{
 	font-family: Times New Roman, "ＭＳ Ｐゴシック";
 }
 
+/* 続きを読むボタン */
+.continuity-button{
+	background: #4845fe!important;
+}
+
+.continuity-button:hover{
+	background: -webkit-gradient(linear, left bottom, left top, from(#4845fe), to(#1976d2));
+	background: -webkit-linear-gradient(bottom, #4845fe 0%, #1976d2 100%);
+	background: linear-gradient(to top, #4845fe 0%, #1976d2 100%);
+}
+
 /* blockquote style */
 blockquote {
     position: relative;
@@ -286,6 +297,12 @@ blockquote p {
 		margin-left: 5px;
 		margin-top: 0px;
 	}
+	.comment-delete-button{
+		display: flex;
+	}
+	.comment-confirm-button{
+		padding: 30px;
+	}
 }
 
 @media screen and (max-width: 370px) {
@@ -294,6 +311,14 @@ blockquote p {
     max-height: 100px;
     object-fit: cover;
   }
+}
+@media screen and (max-width: 345px) and (min-width: 321px) {
+	.comment-delete-button{
+		display: block;
+	}
+	.comment-confirm-button:not(:first-child){
+		margin-left: 20px!important;
+	}
 }
 @media screen and (max-width: 340px) {
 	.pay {
@@ -309,6 +334,16 @@ blockquote p {
 	.comment-availability strong{
 		margin-left: 3px;
 		margin-top: 0px;
+	}
+}
+@media screen and (max-width: 320px) {
+	.comment-delete-button{
+		display: flex;
+		flex-flow: column;
+	}
+	.comment-confirm-button:not(:first-child){
+		margin-left: 6px!important;
+		width: 115.85px;
 	}
 }
 @media screen and (max-width: 285px) {

@@ -5,7 +5,7 @@
 <!-- Start your project here-->
 <div class="jumbotron jumbotron-fluid" >
   <div class="container">
-    <h2 class="display-4 text-center">{{ request.site.siteconfig.top_title }}</h2>
+    <h1 class="text-center">{{ request.site.siteconfig.top_title }}</h1>
     <p class="lead">{{ request.site.siteconfig.top_subtitle|safe}}</p>
     <!-- <p class="text-center" style="color: red;">※寄付はログイン後ブログ詳細ページにてお願いします</p> -->
   </div>
@@ -44,9 +44,9 @@
           <!--Text-->
           {{item.content|safe|truncatechars_html:70}}
         </div>
-        <div class="card-body">
+        <div class="card-body text-center">
           <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-          <a href="{% url 'blogapp:post_detail' item.id %}" type="button" class="btn btn-blue btn-md">内容を見る</a>
+          <a href="{% url 'blogapp:post_detail' item.id %}" type="button" class="btn btn-blue btn-md continuity-button">続きを読む</a>
           <a href="{% url 'blogapp:like_add' item.pk %}"><i class="fas fa-heart"
               style="color: pink;"></i></a>&nbsp;{{item.like_count}}
         </div>

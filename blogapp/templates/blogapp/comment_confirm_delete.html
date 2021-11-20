@@ -16,9 +16,11 @@
         {{object.text}}
         <hr>
         <br>
-        <input type="submit" class="btn btn-outline-danger" value="削除する">
-        <button type="button" onclick="history.back()"
-          class="btn ml-5 btn-outline-primary waves-effect">戻る</button>
+        <div class="comment-delete-button">
+          <input type="submit" class="btn btn-outline-danger comment-confirm-button" value="削除する">
+          <button type="button" onclick="history.back()"
+            class="btn ml-5 btn-outline-primary waves-effect comment-confirm-button">戻る</button>
+        </div>
       </form>
     </div>
     <br>
