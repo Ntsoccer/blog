@@ -54,9 +54,9 @@
         <div class="card-footer text-muted text-center">
           <small>更新日: 
             {% if item.updated_at %}
-            {{item.updated_at.date}}
+            {{item.updated_at|date}}
             {% else %}
-            {{item.created_at.date}}
+            {{item.created_at|date}}
             {% endif %}
           </small>
         </div>

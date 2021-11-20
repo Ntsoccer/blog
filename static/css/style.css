@@ -81,7 +81,7 @@ blockquote p {
 }
 
 /* 見出し */
-.card-detail h1,.card-detail h2,.card-detail h3,.card-detail h4:nth-of-type(0),.card-detail h5,.card-detail h6{
+.card-detail h1,.card-detail h2,.card-detail h3,.card-detail h4:not(:first-child),.card-detail h5,.card-detail h6{
 	position: relative;
 	background: #ffde83;
 	box-shadow: 0px 0px 0px 5px #ffde83;
@@ -93,7 +93,7 @@ blockquote p {
 .card-detail h1::after,
 .card-detail h2::after,
 .card-detail h3::after,
-.card-detail h4:nth-of-type(0):after,
+.card-detail h4:not(:first-child):after,
 .card-detail h5::after,
 .card-detail h6::after{
 	content: "";
