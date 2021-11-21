@@ -27,6 +27,7 @@ from .forms import (PostForm, LoginForm, UserCreateForm, UserUpdateForm, MyPassw
                     MyPasswordResetForm, MySetPasswordForm, SearchForm, ContactForm, CommentForm, ReplyForm)
 from .mixins import SuperuserRequiredMixin
 from django.utils import timezone
+from django.http import JsonResponse
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -60,15 +61,21 @@ class Index(TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
+        posts = Post.objects.all()
+        liked_list = []
+        for post in posts:
+            liked = post.like_set.filter(user=self.request.user)
+            if liked.exists():
+                liked_list.append(post.id)
         if Post.updated_at:
             post_list = Post.objects.all().order_by('-updated_at')[:9]
         else:
             post_list = Post.objects.all().order_by('-created_at')[:9]
         context = {
             'post_list': post_list,
+            'liked_list': liked_list,
         }
         return context
-
 
 class PostCreate(SuperuserRequiredMixin, CreateView):
     model = Post
@@ -325,6 +332,28 @@ def Like_add(request, *args, **kwargs):
     messages.success(request, 'お気に入りに追加しました。')
     return redirect('blogapp:index')
 
+@login_required
+def LikeView(request):
+    if request.method =="POST":
+        post = get_object_or_404(Post, pk=request.POST.get('post_id'))
+        user = request.user
+        liked = False
+        like = Like.objects.filter(post=post, user=user)
+        if like.exists():
+            like.delete()
+        else:
+            like.create(post=post, user=user)
+            liked = True
+    
+        context={
+            'post_id': post.id,
+            'liked': liked,
+            'count': post.like_set.count(),
+        }
+
+    if request.is_ajax():
+        return JsonResponse(context)
+
 
 class CategoryList(ListView):
     model = Category
@@ -398,6 +427,7 @@ class CommentFormView(LoginRequiredMixin, CreateView):
         comment.post = post
         comment.request = self.request
         comment.save()
+        messages.success(self.request, 'コメントを投稿しました。')
         return redirect('blogapp:post_detail', pk=post_pk)
 
     def get_context_data(self, **kwargs):
@@ -433,6 +463,7 @@ class ReplyFormView(LoginRequiredMixin, CreateView):
         reply.request = self.request
         reply.authority = self.request.user.email
         reply.save()
+        messages.success(self.request, '返信コメントを投稿しました。')
         return redirect('blogapp:post_detail', pk=reply.comment.post.pk)
 
     def get_context_data(self, **kwargs):

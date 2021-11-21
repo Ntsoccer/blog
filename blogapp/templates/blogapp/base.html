@@ -139,6 +139,7 @@
   </nav>
   <!--/.Navbar-->
   <main class="container py-5">
+    {% block message %}
     {% if messages %}
     <br>
     {% for message in messages %}
@@ -147,6 +148,7 @@
     </div>
     {% endfor %}
     {% endif %}
+    {% endblock %}
 
 
     {% block content %}
@@ -255,6 +257,60 @@
     btn.innerText = "寄付する";
     btn.style.padding="0px 40px";
   </script>
+  <!-- いいね機能を非同期化 -->
+  <!-- {% block heart %} -->
+  <script>
+    $(document).ready(function(event){
+      $(document).on('click', '#like', function(event){
+          event.preventDefault();
+          $.ajax({
+              type: 'POST',
+              url: "{% url 'blogapp:like' %}",
+              data: {
+                  'post_id': $(this).attr('name'),
+                  'csrfmiddlewaretoken': '{{ csrf_token }}'},
+              dataType: 'json',
+              success: function(response){
+                  selector = document.getElementsByName(response.post_id);
+                  if(response.liked){
+                      $(selector).html("<i class='fas fa-lg fa-heart LikeIcon' style='color: red;'></i>"); 
+                  }
+                  else {
+                      $(selector).html("<i class='far fa-lg fa-heart'></i>");
+                  }
+                  selector2 = document.getElementsByName(response.post_id + "-count");
+                  $(selector2).text(response.count);
+              }
+          });
+      });
+    });
+
+    $(document).ready(function(event){
+      $(document).on('click', '#detail-like', function(event){
+          event.preventDefault();
+          $.ajax({
+              type: 'POST',
+              url: "{% url 'blogapp:like' %}",
+              data: {
+                  'post_id': $(this).attr('name'),
+                  'csrfmiddlewaretoken': '{{ csrf_token }}'},
+              dataType: 'json',
+              success: function(response){
+                  selector = document.getElementsByName(response.post_id);
+                  if(response.liked){
+                      $(selector).html("<p class='btn' style='background-color: #ff0000; color: white;'>お気に入りから削除する</p>")
+                  }
+                  else {
+                      $(selector).html("<p class='btn' style='background-color: #FF6699; color: white;'>お気に入りに追加する</p>")
+                  }
+                  selector2 = document.getElementsByName(response.post_id + "-count");
+                  $(selector2).text(response.count);
+              }
+          });
+      });
+    });
+</script>
+  <!-- {% endblock %} -->
 </body>
 
 </html>

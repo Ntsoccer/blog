@@ -30,6 +30,7 @@ urlpatterns = [
     path('password_reset/complete/', views.PasswordResetComplete.as_view(),
          name='password_reset_complete'),
     path('like/<int:post_id>', views.Like_add, name='like_add'),
+    path('like', views.LikeView, name='like'),
     path('category_list', views.CategoryList.as_view(), name='category_list'),
     path('category_detail/<str:name_en>',
          views.CategoryDetail.as_view(), name='category_detail'),

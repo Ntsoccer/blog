@@ -33,8 +33,16 @@
         <!-- Text -->
         <p class="card-text">{{object.content|safe}}</p>
         <!-- Button -->
-        <a href="{% url 'blogapp:like_add' object.pk %}" class="btn"
-          style="background-color: #FF6699; color: white;">お気に入りにいれる</a>
+        <!-- <a href="{% url 'blogapp:like_add' object.pk %}" class="btn"
+          style="background-color: #FF6699; color: white;">お気に入りにいれる</a> -->
+        <form action="{% url 'blogapp:like' %}" method="POST">
+          {% csrf_token %}
+          {% if item.id in liked_list %}
+            <a id="detail-like" name="{{object.id}}"><p class="btn" style="background-color: #ff0000; color: white;">お気に入りから削除する</p></a>
+          {% else %}
+            <a id="detail-like" name="{{object.id}}"><p class="btn" style="background-color: #FF6699; color: white;">お気に入りに追加する</p></a>
+          {% endif %}
+        </form>
         <!-- <small>{% if object.like_count %}{{object.like_count}}人{% endif %}</small> -->
         <hr>
         <a href="/" class="btn btn-outline-dark">戻る</a>
