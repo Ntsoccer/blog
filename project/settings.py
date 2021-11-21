@@ -243,10 +243,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FOWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # 開発環境のみ
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # 本番環境でコメントを外す
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEBUG = False
 

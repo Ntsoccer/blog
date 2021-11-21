@@ -63,10 +63,12 @@ class Index(TemplateView):
         context = super().get_context_data(**kwargs)
         posts = Post.objects.all()
         liked_list = []
+        user = self.request.user
         for post in posts:
-            liked = post.like_set.filter(user=self.request.user)
-            if liked.exists():
-                liked_list.append(post.id)
+            if self.request.user.id:
+                liked = post.like_set.filter(user=user)
+                if liked.exists():
+                    liked_list.append(post.id)
         if Post.updated_at:
             post_list = Post.objects.all().order_by('-updated_at')[:9]
         else:
@@ -338,12 +340,13 @@ def LikeView(request):
         post = get_object_or_404(Post, pk=request.POST.get('post_id'))
         user = request.user
         liked = False
-        like = Like.objects.filter(post=post, user=user)
-        if like.exists():
-            like.delete()
-        else:
-            like.create(post=post, user=user)
-            liked = True
+        if request.user.id:
+            like = Like.objects.filter(post=post, user=user)
+            if like.exists():
+                like.delete()
+            else:
+                like.create(post=post, user=user)
+                liked = True
     
         context={
             'post_id': post.id,

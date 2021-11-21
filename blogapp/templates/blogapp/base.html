@@ -280,6 +280,9 @@
                   }
                   selector2 = document.getElementsByName(response.post_id + "-count");
                   $(selector2).text(response.count);
+              },
+              error: function(response){
+                location.href="{% url 'blogapp:login' %}";
               }
           });
       });
@@ -305,8 +308,11 @@
                   }
                   selector2 = document.getElementsByName(response.post_id + "-count");
                   $(selector2).text(response.count);
+              },
+              error: function(response){
+                location.href="{% url 'blogapp:login' %}";
               }
-          });
+          })
       });
     });
 </script>
