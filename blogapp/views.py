@@ -98,6 +98,14 @@ class PostDetail(DetailView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
+        posts = Post.objects.all()
+        liked_list = []
+        user = self.request.user
+        for post in posts:
+            if self.request.user.id:
+                liked = post.like_set.filter(user=user)
+                if liked.exists():
+                    liked_list.append(post.id)
         context['publick_key'] = settings.STRIPE_PUBLIC_KEY
         detail_data = Post.objects.get(id=self.kwargs['pk'])
         category_posts = Post.objects.filter(
@@ -106,6 +114,7 @@ class PostDetail(DetailView):
             'object': detail_data,
             'category_posts': category_posts,
             'context': context,
+            'liked_list': liked_list,
         }
         return params
 

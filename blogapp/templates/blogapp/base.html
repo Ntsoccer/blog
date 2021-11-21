@@ -139,7 +139,6 @@
   </nav>
   <!--/.Navbar-->
   <main class="container py-5">
-    {% block message %}
     {% if messages %}
     <br>
     {% for message in messages %}
@@ -148,7 +147,6 @@
     </div>
     {% endfor %}
     {% endif %}
-    {% endblock %}
 
 
     {% block content %}
@@ -301,10 +299,10 @@
               success: function(response){
                   selector = document.getElementsByName(response.post_id);
                   if(response.liked){
-                      $(selector).html("<p class='btn' style='background-color: #ff0000; color: white;'>お気に入りから削除する</p>")
+                      $(selector).html("<p class='btn' style='background-color: #ff0000; color: white;'>お気に入りから削除する</p>");
                   }
                   else {
-                      $(selector).html("<p class='btn' style='background-color: #FF6699; color: white;'>お気に入りに追加する</p>")
+                      $(selector).html("<p class='btn' style='background-color: #FF6699; color: white;'>お気に入りに追加する</p>");
                   }
                   selector2 = document.getElementsByName(response.post_id + "-count");
                   $(selector2).text(response.count);
@@ -312,9 +310,9 @@
               error: function(response){
                 location.href="{% url 'blogapp:login' %}";
               }
+            })
           })
       });
-    });
 </script>
   <!-- {% endblock %} -->
 </body>

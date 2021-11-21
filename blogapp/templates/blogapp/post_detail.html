@@ -37,7 +37,7 @@
           style="background-color: #FF6699; color: white;">お気に入りにいれる</a> -->
         <form action="{% url 'blogapp:like' %}" method="POST">
           {% csrf_token %}
-          {% if item.id in liked_list %}
+          {% if object.id in liked_list %}
             <a id="detail-like" name="{{object.id}}"><p class="btn" style="background-color: #ff0000; color: white;">お気に入りから削除する</p></a>
           {% else %}
             <a id="detail-like" name="{{object.id}}"><p class="btn" style="background-color: #FF6699; color: white;">お気に入りに追加する</p></a>
