@@ -129,9 +129,12 @@
       </ul>
       <!-- Links -->
 
-      <form action="{% url 'blogapp:search' %}" class="form-inline" method="POST">
+      <form action="{% url 'blogapp:search' %}" class="form-inline search-box" method="POST">
         {% csrf_token %}
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="freeword">
+        <div class="form-control mr-sm-2">
+          <input class="search-input" type="search" placeholder="Search" aria-label="Search" name="freeword">
+          <button class="search-icon-button" type="submit"><i class="fas fa-search" name="freeword"></i></button>
+        </div>
       </form>
     </div>
     <!-- Collapsible content -->
